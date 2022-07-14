@@ -27,6 +27,7 @@ public class App {
                     String author = sc.nextLine();
                     wiseSayingid++;
                     wiseSaying = new WiseSaying(wiseSayingid,content,author);
+                    System.out.println(wiseSayingid+"번 명언이 등록 되었습니다.");
                     break;
             }
         }

@@ -27,8 +27,11 @@ public class AppTest {
     public void 프로그램_시작시_타이틀_출력_그리고_등록() {
         Scanner sc = TestUtil.genScanner("""
                 등록
-                이순신
-                내 죽음을 알리지마라.
+                작가1
+                명언1
+                등록
+                작가2
+                명언2
                 종료
                 """);
         ByteArrayOutputStream output = TestUtil.setOutToByteArray();
@@ -40,5 +43,7 @@ public class AppTest {
 
         assertTrue(rs.contains("명언 : "));
         assertTrue(rs.contains("작가 : "));
+        assertTrue(rs.contains("1번 명언이 등록 되었습니다."));
+        assertTrue(rs.contains("2번 명언이 등록 되었습니다."));
     }
 }
