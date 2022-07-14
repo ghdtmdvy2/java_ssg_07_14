@@ -12,5 +12,15 @@ public class WiseSaying {
         this.content = content;
         this.author = author;
     }
+    String toJson(){
+        String json = """
+                {
+                    id = %d
+                    content = "%s"
+                    author = "%s"
+                }
+                """.stripIndent().formatted(this.id,this.content,this.author).trim();
+        return json;
+    }
 
 }

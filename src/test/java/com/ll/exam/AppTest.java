@@ -11,6 +11,14 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class AppTest {
     @Test
+    void 파일에_객체를_저장() {
+        Util.json.mkdir("test_data");
+        WiseSaying wiseSaying = new WiseSaying(1,"명언1","작가1");
+        Util.file.saveToFile("test_data/1.json",wiseSaying.toJson());
+        String rs = Util.file.readFromFile("test_data/1.json","");
+        assertEquals(wiseSaying.toJson(),rs);
+    }
+    @Test
     void 파일에_내용쓰기() {
         Util.json.mkdir("test_data");
         Util.file.saveToFile("test_data/1.json","내용\n내용");
