@@ -46,4 +46,28 @@ public class AppTest {
         assertTrue(rs.contains("1번 명언이 등록 되었습니다."));
         assertTrue(rs.contains("2번 명언이 등록 되었습니다."));
     }
+    @Test
+    public void 프로그램_시작시_타이틀_출력_그리고_등록_목록() {
+        Scanner sc = TestUtil.genScanner("""
+                등록
+                작가1
+                명언1
+                등록
+                작가2
+                명언2
+                목록
+                종료
+                """);
+        ByteArrayOutputStream output = TestUtil.setOutToByteArray();
+
+        new App(sc).run();
+
+        String rs = output.toString();
+        TestUtil.clearSetOutToByteArray(output);
+
+        assertTrue(rs.contains("번호 / 작가 / 명언"));
+        assertTrue(rs.contains("----------------------"));
+        assertTrue(rs.contains(("2 / 작가2 / 명언2")));
+        assertTrue(rs.contains("1 / 작가1 / 명언1"));
+    }
 }

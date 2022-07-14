@@ -1,14 +1,18 @@
 package com.ll.exam;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class App {
     private Scanner sc;
     private WiseSaying wiseSaying;
+    private List<WiseSaying> wiseSayings;
     private int wiseSayingid;
     public App(Scanner sc) {
         this.sc = sc;
         wiseSayingid = 0;
+        wiseSayings = new ArrayList<>();
     }
     public void run(){
         System.out.println("== 명언 SSG ==");
@@ -27,8 +31,15 @@ public class App {
                     String author = sc.nextLine();
                     wiseSayingid++;
                     wiseSaying = new WiseSaying(wiseSayingid,content,author);
+                    wiseSayings.add(wiseSaying);
                     System.out.println(wiseSayingid+"번 명언이 등록 되었습니다.");
                     break;
+                case "목록":
+                    System.out.println("번호 / 작가 / 명언");
+                    System.out.println("----------------------");
+                    for(int i = wiseSayings.size()-1; i>=0; i--){
+                        System.out.printf("%d / %s / %s",wiseSayings.get(i).id,wiseSayings.get(i).content,wiseSayings.get(i).author);
+                    }
             }
         }
     }
