@@ -15,6 +15,10 @@ import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class Util {
+
+
+
+
     public static class json {
 
         public static Map<String, Object> jsonToMapFromFile(String path) {
@@ -43,6 +47,9 @@ public class Util {
 
             return map;
         }
+        public static void mkdir(String path) {
+            new File(path).mkdirs();
+        }
     }
 
     public static class file {
@@ -61,9 +68,7 @@ public class Util {
             }
         }
 
-        public static void mkdir(String path) {
-            new File(path).mkdirs();
-        }
+
 
         public static String readFromFile(String path, String defaultValue) {
             try (RandomAccessFile reader = new RandomAccessFile(path, "r")) {
