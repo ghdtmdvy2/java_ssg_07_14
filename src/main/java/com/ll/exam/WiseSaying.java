@@ -15,9 +15,9 @@ public class WiseSaying {
     String toJson(){
         String json = """
                 {
-                    id = %d
-                    content = "%s"
-                    author = "%s"
+                    "id": %d,
+                    "content": "%s",
+                    "author": "%s"
                 }
                 """.stripIndent().formatted(this.id,this.content,this.author).trim();
         return json;
