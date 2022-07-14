@@ -40,6 +40,13 @@ public class App {
                     for(int i = wiseSayings.size()-1; i>=0; i--){
                         System.out.printf("%d / %s / %s",wiseSayings.get(i).id,wiseSayings.get(i).content,wiseSayings.get(i).author);
                     }
+                    break;
+                case "삭제":
+                    int rmnum = rq.getIntParam("id",0);
+
+                    wiseSayings.remove(rmnum-1);
+                    System.out.printf("%d번 명언이 삭제 되었습니다.",rmnum);
+                    break;
             }
         }
     }
