@@ -90,4 +90,25 @@ public class AppTest {
         TestUtil.clearSetOutToByteArray(output);
         assertTrue(rs.contains("1번 명언이 삭제 되었습니다."));
     }
+    @Test
+    public void 프로그램_시작시_타이틀_출력_그리고_등록_삭제_예외처리() {
+        Scanner sc = TestUtil.genScanner("""
+                등록
+                작가1
+                명언1
+                등록
+                작가2
+                명언2
+                삭제?id=1
+                삭제?id=1
+                종료
+                """);
+        ByteArrayOutputStream output = TestUtil.setOutToByteArray();
+
+        new App(sc).run();
+
+        String rs = output.toString();
+        TestUtil.clearSetOutToByteArray(output);
+        assertTrue(rs.contains("1번 명언은 존재하지 않습니다."));
+    }
 }

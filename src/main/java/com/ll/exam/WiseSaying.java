@@ -12,4 +12,5 @@ public class WiseSaying {
         this.content = content;
         this.author = author;
     }
+
 }

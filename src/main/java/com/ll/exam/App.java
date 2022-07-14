@@ -43,12 +43,26 @@ public class App {
                     break;
                 case "삭제":
                     int rmnum = rq.getIntParam("id",0);
+                    WiseSaying findwiseSaying = findById(rmnum);
 
-                    wiseSayings.remove(rmnum-1);
+                    if (findwiseSaying == null){
+                        System.out.printf("%d번 명언은 존재하지 않습니다.",rmnum);
+                        continue;
+                    }
+                    wiseSayings.remove(findwiseSaying);
                     System.out.printf("%d번 명언이 삭제 되었습니다.",rmnum);
                     break;
             }
         }
+    }
+
+    private WiseSaying findById(int rmnum) {
+        for(int i = wiseSayings.size()-1; i>=0; i--){
+            if (wiseSayings.get(i).id == rmnum) {
+                return wiseSayings.get(i);
+            }
+        }
+        return null;
     }
 
 
