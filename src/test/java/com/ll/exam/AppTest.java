@@ -64,7 +64,6 @@ public class AppTest {
 
         String rs = output.toString();
         TestUtil.clearSetOutToByteArray(output);
-        System.out.println(rs);
         assertTrue(rs.contains("번호 / 작가 / 명언"));
         assertTrue(rs.contains("----------------------"));
         assertTrue(rs.contains(("2 / 작가2 / 명언2")));
@@ -110,7 +109,6 @@ public class AppTest {
 
         String rs = output.toString();
         TestUtil.clearSetOutToByteArray(output);
-        System.out.println(rs);
         assertTrue(rs.contains("1번 명언은 존재하지 않습니다."));
     }
     @Test
@@ -136,7 +134,6 @@ public class AppTest {
 
         String rs = output.toString();
         TestUtil.clearSetOutToByteArray(output);
-        System.out.println(rs);
         assertTrue(rs.contains("명언(기존) : 명언2"));
         assertTrue(rs.contains("명언 : "));
         assertTrue(rs.contains("작가(기존) : 작가2"));
