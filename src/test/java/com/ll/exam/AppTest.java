@@ -50,11 +50,11 @@ public class AppTest {
     public void 프로그램_시작시_타이틀_출력_그리고_등록_목록() {
         Scanner sc = TestUtil.genScanner("""
                 등록
-                작가1
                 명언1
+                작가1
                 등록
-                작가2
                 명언2
+                작가2
                 목록
                 종료
                 """);
@@ -64,7 +64,7 @@ public class AppTest {
 
         String rs = output.toString();
         TestUtil.clearSetOutToByteArray(output);
-
+        System.out.println(rs);
         assertTrue(rs.contains("번호 / 작가 / 명언"));
         assertTrue(rs.contains("----------------------"));
         assertTrue(rs.contains(("2 / 작가2 / 명언2")));
@@ -99,6 +99,7 @@ public class AppTest {
                 등록
                 작가2
                 명언2
+                목록
                 삭제?id=1
                 삭제?id=1
                 종료
@@ -109,6 +110,36 @@ public class AppTest {
 
         String rs = output.toString();
         TestUtil.clearSetOutToByteArray(output);
+        System.out.println(rs);
         assertTrue(rs.contains("1번 명언은 존재하지 않습니다."));
+    }
+    @Test
+    public void 프로그램_시작시_타이틀_출력_그리고_등록_삭제_수정() {
+        Scanner sc = TestUtil.genScanner("""
+                등록
+                명언1
+                작가1
+                등록
+                명언2
+                작가2
+                목록
+                삭제?id=1
+                삭제?id=1
+                수정?id=2
+                현재와 자신을 사랑하라.
+                홍길동
+                종료
+                """);
+        ByteArrayOutputStream output = TestUtil.setOutToByteArray();
+
+        new App(sc).run();
+
+        String rs = output.toString();
+        TestUtil.clearSetOutToByteArray(output);
+        System.out.println(rs);
+        assertTrue(rs.contains("명언(기존) : 명언2"));
+        assertTrue(rs.contains("명언 : "));
+        assertTrue(rs.contains("작가(기존) : 작가2"));
+        assertTrue(rs.contains("작가(기존) : "));
     }
 }

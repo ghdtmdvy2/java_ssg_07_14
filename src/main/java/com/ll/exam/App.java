@@ -9,6 +9,8 @@ public class App {
     private WiseSaying wiseSaying;
     private List<WiseSaying> wiseSayings;
     private int wiseSayingid;
+    WiseSaying findwiseSaying;
+
     public App(Scanner sc) {
         this.sc = sc;
         wiseSayingid = 0;
@@ -38,12 +40,12 @@ public class App {
                     System.out.println("번호 / 작가 / 명언");
                     System.out.println("----------------------");
                     for(int i = wiseSayings.size()-1; i>=0; i--){
-                        System.out.printf("%d / %s / %s",wiseSayings.get(i).id,wiseSayings.get(i).content,wiseSayings.get(i).author);
+                        System.out.printf("%d / %s / %s",wiseSayings.get(i).id,wiseSayings.get(i).author,wiseSayings.get(i).content);
                     }
                     break;
                 case "삭제":
                     int rmnum = rq.getIntParam("id",0);
-                    WiseSaying findwiseSaying = findById(rmnum);
+                    findwiseSaying = findById(rmnum);
 
                     if (findwiseSaying == null){
                         System.out.printf("%d번 명언은 존재하지 않습니다.",rmnum);
@@ -51,6 +53,22 @@ public class App {
                     }
                     wiseSayings.remove(findwiseSaying);
                     System.out.printf("%d번 명언이 삭제 되었습니다.",rmnum);
+                    break;
+                case "수정":
+                    int mdnum = rq.getIntParam("id",0);
+                    findwiseSaying = findById(mdnum);
+                    if (findwiseSaying == null){
+                        System.out.printf("%d번 명언은 존재하지 않습니다.",mdnum);
+                        continue;
+                    }
+                    System.out.printf("명언(기존) : %s", findwiseSaying.content);
+                    System.out.print("명언 : ");
+                    content = sc.nextLine();
+                    findwiseSaying.content = content;
+                    System.out.printf("작가(기존) : %s", findwiseSaying.author);
+                    System.out.print("작가 : ");
+                    author = sc.nextLine();
+                    findwiseSaying.author = author;
                     break;
             }
         }
